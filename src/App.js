@@ -11,6 +11,7 @@ function App() {
     const ethernet = useSelector(state => state.app.ethernet);
     const social = useSelector(state => state.app.social);
     const messengers = useSelector(state => state.app.messengers);
+    const totalPrice = useSelector(state => state.app.totalPrice);
 
 
     const renderSocial = renderServices(social)
@@ -24,13 +25,13 @@ function App() {
                 <div className='title'>Минуты</div>
                 <div>На Tele2 России безлимитно</div>
                 <div>на другие мобильные номера домашнего региона</div>
-                <MySlider marks={minutes} min={200} max={1000} defaultValue={200}/>
+                <MySlider marks={minutes} min={200} max={1000} defaultValue={200} type='minutes'/>
                 <div>
                     <AddCircleOutlineRoundedIcon className='icon'/>
                      Используйте вместе с тарифом
                 </div>
                 <div className='title'>Интернет</div>
-                <MySlider marks={ethernet} min={10} max={40} defaultValue={10}/>
+                <MySlider marks={ethernet} min={10} max={40} defaultValue={10} type='ethernet'/>
 
                 <div className='title'>Соцсети</div>
                 <div className='services'>
@@ -45,7 +46,7 @@ function App() {
 
             </div>
             <div className='footer'>
-                <div className='foot'>420p/месяц</div>
+                <div className='foot'>{totalPrice} ₽/месяц</div>
             </div>
 
         </div>

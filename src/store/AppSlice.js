@@ -3,16 +3,16 @@ import {createSlice} from '@reduxjs/toolkit'
 
 const initialState = {
     minutes: [
-        {value: 200, label: '200 мин'},
-        {value: 400, label: '400 мин'},
-        {value: 800, label: '800 мин'},
-        {value: 1000, label: '1000 мин'},
+        {value: 200, label: '200 мин', price: 200},
+        {value: 400, label: '400 мин', price: 280},
+        {value: 800, label: '800 мин', price: 270},
+        {value: 1000, label: '1000 мин', price: 260},
     ],
     ethernet: [
-        {value: 10, label: '10 ГБ'},
-        {value: 20, label: '20 ГБ'},
-        {value: 35, label: '35 ГБ'},
-        {value: 40, label: '40 ГБ'},
+        {value: 10, label: '10 ГБ', price: 200},
+        {value: 20, label: '20 ГБ', price: 280},
+        {value: 35, label: '35 ГБ', price: 270},
+        {value: 40, label: '40 ГБ', price: 260},
     ],
     social: [
         {
@@ -67,14 +67,27 @@ const initialState = {
             srcA: 'https://msk.tele2.ru/api/media/asset?mediaId=m3230032',
             price: '10'
         }
-    ]
+    ],
+    totalPrice: 400,
+    currMin: null,
+    currGB: null,
+
+
 }
 
 const appSlice = createSlice({
     name: 'app',
     initialState,
     reducers: {
-        openData: (state, action) => {state.catalogData = action.payload},
+        getMin: (state, action) => {
+            const price = initialState.minutes.find(i => i.value === action.payload)
+            state.currMin = price.price
+
+        },
+        getGb: (state, action) => {
+            const price = initialState.ethernet.find(i => i.value === action.payload)
+            state.currGB = price.price
+        },
     },
 });
 
@@ -82,5 +95,5 @@ const {actions, reducer} = appSlice;
 
 export default reducer;
 export const {
-    openData
+    getMin, getGb
 } = actions;
