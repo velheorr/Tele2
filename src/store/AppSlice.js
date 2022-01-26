@@ -68,9 +68,10 @@ const initialState = {
             price: '10'
         }
     ],
-    totalPrice: 400,
-    currMin: null,
-    currGB: null,
+    totalPrice: 0,
+    currMin: 0,
+    currGB: 0,
+    servicePrice: 0
 
 
 }
@@ -88,6 +89,9 @@ const appSlice = createSlice({
             const price = initialState.ethernet.find(i => i.value === action.payload)
             state.currGB = price.price
         },
+        changeServicePrice: (state, action) => {
+            state.servicePrice = action.payload
+        }
     },
 });
 
@@ -95,5 +99,5 @@ const {actions, reducer} = appSlice;
 
 export default reducer;
 export const {
-    getMin, getGb
+    getMin, getGb, changeServicePrice
 } = actions;

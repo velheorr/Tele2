@@ -11,11 +11,17 @@ function App() {
     const ethernet = useSelector(state => state.app.ethernet);
     const social = useSelector(state => state.app.social);
     const messengers = useSelector(state => state.app.messengers);
+
     const totalPrice = useSelector(state => state.app.totalPrice);
+    const currMin = useSelector(state => state.app.currMin);
+    const currGB = useSelector(state => state.app.currGB);
+    const servicePrice = useSelector(state => state.app.servicePrice);
 
 
     const renderSocial = renderServices(social)
     const renderMessengers = renderServices(messengers)
+
+    const finalPrice = totalPrice + currMin + currGB + servicePrice
 
 
     return (
@@ -46,7 +52,7 @@ function App() {
 
             </div>
             <div className='footer'>
-                <div className='foot'>{totalPrice} ₽/месяц</div>
+                <div className='foot'>{finalPrice} ₽/месяц</div>
             </div>
 
         </div>
