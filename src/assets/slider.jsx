@@ -3,7 +3,7 @@ import Slider from "@mui/material/Slider";
 import Box from "@mui/material/Box";
 import {useEffect} from "react";
 import {useDispatch} from "react-redux";
-import {getGb, getMin} from "../store/AppSlice";
+import {getGb, getMin, getSms} from "../store/AppSlice";
 
 
 const MySlider = ({marks, min, max, defaultValue, type}) => {
@@ -18,7 +18,9 @@ const MySlider = ({marks, min, max, defaultValue, type}) => {
             dispatch(getMin(val))
            } else if (type === 'ethernet'){
             dispatch(getGb(val))
-        }
+            } else if (type === 'sms') {
+                dispatch(getSms(val))
+            }
     }
 
     const theme = createTheme({
