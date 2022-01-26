@@ -12,7 +12,6 @@ function App() {
     const social = useSelector(state => state.app.social);
     const messengers = useSelector(state => state.app.messengers);
 
-    const totalPrice = useSelector(state => state.app.totalPrice);
     const currMin = useSelector(state => state.app.currMin);
     const currGB = useSelector(state => state.app.currGB);
     const servicePrice = useSelector(state => state.app.servicePrice);
@@ -21,7 +20,7 @@ function App() {
     const renderSocial = renderServices(social)
     const renderMessengers = renderServices(messengers)
 
-    const finalPrice = totalPrice + currMin + currGB + servicePrice
+    const finalPrice =  currMin + currGB + servicePrice
 
 
     return (
@@ -36,6 +35,8 @@ function App() {
                     <AddCircleOutlineRoundedIcon className='icon'/>
                      Используйте вместе с тарифом
                 </div>
+                <div className='title'>СМС</div>
+                <MySlider marks={ethernet} min={0} max={40} defaultValue={10} type='ethernet'/>
                 <div className='title'>Интернет</div>
                 <MySlider marks={ethernet} min={10} max={40} defaultValue={10} type='ethernet'/>
 

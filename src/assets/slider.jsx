@@ -13,14 +13,10 @@ const MySlider = ({marks, min, max, defaultValue, type}) => {
         dispatchType(defaultValue)
     },[])
 
-
-
     const dispatchType =(val)=>{
-
         if (type === 'minutes') {
-            console.log(val)
             dispatch(getMin(val))
-        } else if (type === 'ethernet'){
+           } else if (type === 'ethernet'){
             dispatch(getGb(val))
         }
     }

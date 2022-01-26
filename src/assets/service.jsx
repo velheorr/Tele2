@@ -8,8 +8,6 @@ export const renderServices = (data)=>{
 }
 
 
-
-
 const Service = ({item}) => {
     const servicePrice = useSelector(state => state.app.servicePrice);
     const [active, setActive] = useState(false)

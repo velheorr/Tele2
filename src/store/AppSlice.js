@@ -3,16 +3,22 @@ import {createSlice} from '@reduxjs/toolkit'
 
 const initialState = {
     minutes: [
-        {value: 200, label: '200 мин', price: 200},
-        {value: 400, label: '400 мин', price: 280},
-        {value: 800, label: '800 мин', price: 270},
-        {value: 1000, label: '1000 мин', price: 260},
+        {value: 100, label: '200 мин', price: 200},
+        {value: 200, label: '400 мин', price: 280},
+        {value: 300, label: '800 мин', price: 270},
+        {value: 600, label: '1000 мин', price: 260},
+    ],
+    sms: [
+        {value: 0, label: '200 смс', price: 200},
+        {value: 50, label: '400 смс', price: 280},
+        {value: 100, label: '800 смс', price: 270},
+        {value: 150, label: '1000 смс', price: 260},
     ],
     ethernet: [
-        {value: 10, label: '10 ГБ', price: 200},
-        {value: 20, label: '20 ГБ', price: 280},
-        {value: 35, label: '35 ГБ', price: 270},
-        {value: 40, label: '40 ГБ', price: 260},
+        {value: 5, label: '10 ГБ', price: 200},
+        {value: 10, label: '20 ГБ', price: 280},
+        {value: 15, label: '35 ГБ', price: 270},
+        {value: 25, label: '40 ГБ', price: 260},
     ],
     social: [
         {
@@ -68,7 +74,6 @@ const initialState = {
             price: '10'
         }
     ],
-    totalPrice: 0,
     currMin: 0,
     currGB: 0,
     servicePrice: 0
