@@ -1,0 +1,63 @@
+$maxWidth: 1152px;
+
+.container {
+    width: auto;
+    max-width: $maxWidth;
+    padding: 0 18px;
+    margin: 38px auto;
+
+    .header {
+        font-family: ui-sans-serif;
+        font-size: 38px;
+    }
+    .title {
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 22px;
+        margin: 27px 0 17px 0;
+    }
+    .icon {
+        vertical-align: bottom;
+        font-size: 18px !important;
+        padding-right: 5px;
+    }
+    .services {
+        display: flex;
+        >div {
+            width: 36px;
+            text-align: center;
+            margin-right: 18px;
+            transition: margin .3s linear;
+            position: relative;
+            img {
+                width: 36px;
+                height: 36px;
+                cursor: pointer;
+            }
+            span {
+                font-size: 14px;
+                line-height: 32px;
+                color: #8f9399;
+                white-space: nowrap;
+            }
+        }
+    }
+
+
+}
+.footer {
+    z-index: 102;
+    background: #3fcbff;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    .foot {
+        align-items: center;
+        display: flex;
+        height: 84px;
+        font-size: 22px;
+        font-weight: 600;
+        margin: 0px 74px;
+    }
+}
