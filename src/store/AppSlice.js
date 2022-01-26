@@ -22,26 +22,31 @@ const initialState = {
     ],
     social: [
         {
+            id: 12,
             src: 'https://msk.tele2.ru/api/media/asset?mediaId=m1120014',
             srcA: 'https://msk.tele2.ru/api/media/asset?mediaId=m1120004',
             price: 20
         },
         {
+            id: 13,
             src: 'https://msk.tele2.ru/api/media/asset?mediaId=m4580002',
             srcA: 'https://msk.tele2.ru/api/media/asset?mediaId=m4580001',
             price: 20
         },
         {
+            id: 14,
             src: 'https://msk.tele2.ru/api/media/asset?mediaId=m1120015',
             srcA: 'https://msk.tele2.ru/api/media/asset?mediaId=m1120005',
             price: 20
         },
         {
+            id: 15,
             src: 'https://msk.tele2.ru/api/media/asset?mediaId=m1680034',
             srcA: 'https://msk.tele2.ru/api/media/asset?mediaId=m1680033',
             price: 60
         },
         {
+            id: 16,
             src: 'https://msk.tele2.ru/api/media/asset?mediaId=m3340107',
             srcA: 'https://msk.tele2.ru/api/media/asset?mediaId=m3340106',
             price: 60
@@ -49,31 +54,37 @@ const initialState = {
     ],
     messengers: [
         {
+            id: 21,
             src: 'https://msk.tele2.ru/api/media/asset?mediaId=m1120021',
             srcA: 'https://msk.tele2.ru/api/media/asset?mediaId=m1120011',
             price: 10
         },
         {
+            id: 22,
             src: 'https://msk.tele2.ru/api/media/asset?mediaId=m1120019',
             srcA: 'https://msk.tele2.ru/api/media/asset?mediaId=m1120009',
             price: 10
         },
         {
+            id: 23,
             src: 'https://msk.tele2.ru/api/media/asset?mediaId=m1120016',
             srcA: 'https://msk.tele2.ru/api/media/asset?mediaId=m1120006',
             price: 10
         },
         {
+            id: 24,
             src: 'https://msk.tele2.ru/api/media/asset?mediaId=m3340101',
             srcA: 'https://msk.tele2.ru/api/media/asset?mediaId=m3340100',
             price: 20
         },
         {
+            id: 25,
             src: 'https://msk.tele2.ru/api/media/asset?mediaId=m3230033',
             srcA: 'https://msk.tele2.ru/api/media/asset?mediaId=m3230032',
             price: 10
         }
     ],
+    additionalServices: false,
     currMin: 0,
     currSms: 0,
     currGB: 0,
@@ -90,6 +101,7 @@ const appSlice = createSlice({
         },
         getSms: (state, action) => {
             const price = initialState.sms.find(i => i.value === action.payload)
+            price.value === 0 ? state.additionalServices = true : state.additionalServices = false
             state.currSms = price.price
         },
         getGb: (state, action) => {
