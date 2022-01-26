@@ -13,16 +13,12 @@ function App() {
     const social = useSelector(state => state.app.social);
     const messengers = useSelector(state => state.app.messengers);
 
-    const currMin = useSelector(state => state.app.currMin);
-    const currSms = useSelector(state => state.app.currSms);
-    const currGB = useSelector(state => state.app.currGB);
-    const servicePrice = useSelector(state => state.app.servicePrice);
-
+    const total = useSelector(state => state.app.total);
 
     const renderSocial = renderServices(social)
     const renderMessengers = renderServices(messengers)
 
-    const finalPrice =  currMin + currSms + currGB + servicePrice
+    const finalPrice =  total
 
 
     return (
@@ -35,7 +31,7 @@ function App() {
                 <MySlider marks={minutes} min={100} max={600} defaultValue={100} type='minutes'/>
                 <div>
                     <AddCircleOutlineRoundedIcon className='icon'/>
-                     Используйте вместе с тарифом
+                     При отсутствии в тарифе СМС - будут добавлены VK, Whatsapp, Viber
                 </div>
                 <div className='title'>СМС</div>
                 <MySlider marks={sms} min={0} max={150} defaultValue={0} type='sms'/>

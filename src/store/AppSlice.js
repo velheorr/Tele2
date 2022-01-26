@@ -5,14 +5,14 @@ const initialState = {
     minutes: [
         {value: 100, label: '100 мин', price: 150},
         {value: 200, label: '200 мин', price: 200},
-        {value: 300, label: '300 мин', price: 225},
+        {value: 300, label: '300 мин', price: 270},
         {value: 600, label: '600 мин', price: 400},
     ],
     sms: [
         {value: 0, label: '0 смс', price: 0},
-        {value: 50, label: '50 смс', price: 280},
-        {value: 100, label: '100 смс', price: 270},
-        {value: 150, label: '150 смс', price: 260},
+        {value: 50, label: '50 смс', price: 70},
+        {value: 100, label: '100 смс', price: 120},
+        {value: 150, label: '150 смс', price: 170},
     ],
     ethernet: [
         {value: 5, label: '5 ГБ', price: 100},
@@ -31,7 +31,7 @@ const initialState = {
             id: 13,
             src: 'https://msk.tele2.ru/api/media/asset?mediaId=m4580002',
             srcA: 'https://msk.tele2.ru/api/media/asset?mediaId=m4580001',
-            price: 20
+            price: 10
         },
         {
             id: 14,
@@ -88,7 +88,8 @@ const initialState = {
     currMin: 0,
     currSms: 0,
     currGB: 0,
-    servicePrice: 0
+    servicePrice: 0,
+    total: 0
 }
 
 const appSlice = createSlice({
@@ -101,7 +102,12 @@ const appSlice = createSlice({
         },
         getSms: (state, action) => {
             const price = initialState.sms.find(i => i.value === action.payload)
-            price.value === 0 ? state.additionalServices = true : state.additionalServices = false
+            if (price.value === 0) {
+                state.additionalServices = true
+                state.servicePrice = state.servicePrice + 30
+            } else {
+                state.additionalServices = false
+            }
             state.currSms = price.price
         },
         getGb: (state, action) => {
@@ -109,7 +115,10 @@ const appSlice = createSlice({
             state.currGB = price.price
         },
         changeServicePrice: (state, action) => {
-            state.servicePrice = action.payload
+            state.servicePrice = state.servicePrice + action.payload
+        },
+        countTotal: (state,action) => {
+            state.total = state.currMin + state.currSms + state.currGB + state.servicePrice
         }
     },
 });
@@ -118,5 +127,5 @@ const {actions, reducer} = appSlice;
 
 export default reducer;
 export const {
-    getMin, getSms, getGb, changeServicePrice
+    getMin, getSms, getGb, changeServicePrice, countTotal
 } = actions;
