@@ -14,6 +14,6 @@ export const api = {
     // вывод текущего выбранного тарифа в консоль
     async getData(){
         const res = await axios.get(`${baseURL}userData`)
-        console.log(res.data)
+        console.log('Данные отправлены на сервер',res.data)
     }
 }

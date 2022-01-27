@@ -22,13 +22,16 @@
     }
   ],
   "userData": {
-    "ethernet": 100,
+    "ethernet": 220,
     "minutes": 150,
     "sms": 0,
     "services": [
       13,
       21,
-      22
+      22,
+      15,
+      16,
+      24
     ]
   }
 }
