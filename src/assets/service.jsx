@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {changeServicePrice, countTotal} from "../store/AppSlice";
 
@@ -10,7 +10,6 @@ export const renderServices = (data)=>{
 
 const Service = ({item}) => {
     const additionalServices = useSelector(state => state.app.additionalServices);
-    /*const [active, setActive] = useState(false)*/
     const dispatch = useDispatch()
     const {src, srcA, price, id, active} = item;
 
@@ -23,10 +22,6 @@ const Service = ({item}) => {
     },[additionalServices])
 
     const handleActive = (id, bool)=>{
-        /*setActive(!active)
-        let x
-        if (!active) {x = price}
-        else {x = -price}*/
         dispatch(changeServicePrice({id, bool}))
         dispatch(countTotal())
     }

@@ -1,6 +1,6 @@
 import './App.scss';
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
-
+import {api} from './api/api'
 import MySlider from "./assets/slider";
 import {renderServices} from "./assets/service";
 import {useSelector} from "react-redux";
@@ -13,6 +13,8 @@ function App() {
     const social = useSelector(state => state.app.social);
     const messengers = useSelector(state => state.app.messengers);
 
+    const currMin = useSelector(state => state.app.currMin);
+
     const total = useSelector(state => state.app.total);
 
     const renderSocial = renderServices(social)
@@ -20,6 +22,18 @@ function App() {
 
     const finalPrice =  total
 
+    const getApiData = async ()=>{
+        const data = await api.getData('sms')
+        console.log(data.data)
+    }
+    getApiData()
+
+    /*const post = (data)=>{
+        api.postData(data)
+
+        /!*const send = api.postData(data)*!/
+    }
+    post(currMin)*/
 
     return (
         <div className="App">

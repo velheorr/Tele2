@@ -1,4 +1,5 @@
 import {createSlice, current} from '@reduxjs/toolkit'
+import {api} from "../api/api";
 
 
 const initialState = {
@@ -102,6 +103,9 @@ const initialState = {
     total: 0
 }
 
+
+
+
 const appSlice = createSlice({
     name: 'app',
     initialState,
@@ -109,6 +113,8 @@ const appSlice = createSlice({
         getMin: (state, action) => {
             const price = initialState.minutes.find(i => i.value === action.payload)
             state.currMin = price.price
+            api.postData({minutes: state.currMin})
+
         },
         getSms: (state, action) => {
             const price = initialState.sms.find(i => i.value === action.payload)
@@ -118,10 +124,12 @@ const appSlice = createSlice({
                 state.additionalServices = false
             }
             state.currSms = price.price
+            api.postData({sms: state.currSms})
         },
         getGb: (state, action) => {
             const price = initialState.ethernet.find(i => i.value === action.payload)
             state.currGB = price.price
+            api.postData({ethernet: state.currGB})
         },
         changeServicePrice: (state, action) => {
             const searchArr = state.messengers.concat(state.social)
