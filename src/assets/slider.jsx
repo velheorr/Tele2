@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import {useEffect} from "react";
 import {useDispatch} from "react-redux";
 import {countTotal, getGb, getMin, getSms} from "../store/AppSlice";
+import {api} from "../api/api";
 
 
 const MySlider = ({marks, min, max, defaultValue, type}) => {
