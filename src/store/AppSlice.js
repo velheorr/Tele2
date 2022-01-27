@@ -100,6 +100,7 @@ const initialState = {
     currSms: 0,
     currGB: 0,
     servicePrice: 0,
+    serviceList: [],
     total: 0
 }
 
@@ -138,9 +139,18 @@ const appSlice = createSlice({
 
             let count = 0
             searchArr.forEach(i => {
-                if(i.active) {count = count + i.price}
+                if(i.active) {
+                    count = count + i.price
+                    if (!state.serviceList.includes(i.id)) {
+                        state.serviceList.push(i.id)
+                    }
+                } else {
+                    const newArr = state.serviceList.filter(item => item !== i.id )
+                    state.serviceList = newArr
+                }
             })
             state.servicePrice = count
+            api.postData({services: state.serviceList})
         },
         countTotal: (state,action) => {
             state.total = state.currMin + state.currSms + state.currGB + state.servicePrice
