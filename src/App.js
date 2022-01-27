@@ -1,10 +1,8 @@
 import './App.scss';
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
-import {api} from './api/api'
 import MySlider from "./assets/slider";
 import {renderServices} from "./assets/service";
 import {useSelector} from "react-redux";
-
 
 function App() {
     const minutes = useSelector(state => state.app.minutes);
@@ -15,12 +13,9 @@ function App() {
 
     const total = useSelector(state => state.app.total);
 
+    // рэндер соцсетей и мессенджеров
     const renderSocial = renderServices(social)
     const renderMessengers = renderServices(messengers)
-
-    const finalPrice = total
-
-
 
     return (
         <div className="App">
@@ -34,8 +29,10 @@ function App() {
                     <AddCircleOutlineRoundedIcon className='icon'/>
                      При отсутствии в тарифе СМС - будут добавлены VK, Whatsapp, Viber
                 </div>
+
                 <div className='title'>СМС</div>
                 <MySlider marks={sms} min={0} max={150} defaultValue={0} type='sms'/>
+
                 <div className='title'>Интернет</div>
                 <MySlider marks={ethernet} min={5} max={25} defaultValue={5} type='ethernet'/>
 
@@ -48,11 +45,9 @@ function App() {
                 <div className='services'>
                     {renderMessengers}
                 </div>
-
-
             </div>
             <div className='footer'>
-                <div className='foot'>{finalPrice} ₽/месяц</div>
+                <div className='foot'>{total} ₽/месяц</div>
             </div>
 
         </div>

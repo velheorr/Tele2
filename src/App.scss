@@ -1,24 +1,24 @@
 $maxWidth: 1152px;
+$size18: 18px;
 
 .container {
     width: auto;
     max-width: $maxWidth;
     padding: 0 18px;
     margin: 38px auto;
-
     .header {
         font-family: ui-sans-serif;
         font-size: 38px;
     }
     .title {
         font-weight: bold;
-        font-size: 18px;
+        font-size: $size18;
         line-height: 22px;
         margin: 27px 0 17px 0;
     }
     .icon {
         vertical-align: bottom;
-        font-size: 18px !important;
+        font-size: $size18 !important;
         padding-right: 5px;
     }
     .services {
@@ -26,7 +26,7 @@ $maxWidth: 1152px;
         >div {
             width: 36px;
             text-align: center;
-            margin-right: 18px;
+            margin-right: $size18;
             transition: margin .3s linear;
             position: relative;
             img {
@@ -58,6 +58,6 @@ $maxWidth: 1152px;
         height: 84px;
         font-size: 22px;
         font-weight: 600;
-        margin: 0px 74px;
+        margin: 0 74px;
     }
 }

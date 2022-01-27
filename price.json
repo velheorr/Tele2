@@ -1,48 +1,4 @@
 {
-  "minutes": [
-    {
-      "value": 100,
-      "label": "100 мин",
-      "price": 150
-    },
-    {
-      "value": 200,
-      "label": "200 мин",
-      "price": 200
-    },
-    {
-      "value": 300,
-      "label": "300 мин",
-      "price": 270
-    },
-    {
-      "value": 600,
-      "label": "600 мин",
-      "price": 400
-    }
-  ],
-  "sms": [
-    {
-      "value": 0,
-      "label": "0 смс",
-      "price": 0
-    },
-    {
-      "value": 50,
-      "label": "50 смс",
-      "price": 70
-    },
-    {
-      "value": 100,
-      "label": "100 смс",
-      "price": 120
-    },
-    {
-      "value": 150,
-      "label": "150 смс",
-      "price": 170
-    }
-  ],
   "ethernet": [
     {
       "value": 5,
@@ -67,10 +23,12 @@
   ],
   "userData": {
     "ethernet": 100,
-    "minutes": 200,
+    "minutes": 150,
     "sms": 0,
     "services": [
-      16
+      13,
+      21,
+      22
     ]
   }
 }

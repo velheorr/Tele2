@@ -105,8 +105,6 @@ const initialState = {
 }
 
 
-
-
 const appSlice = createSlice({
     name: 'app',
     initialState,
@@ -115,15 +113,10 @@ const appSlice = createSlice({
             const price = initialState.minutes.find(i => i.value === action.payload)
             state.currMin = price.price
             api.postData({minutes: state.currMin})
-
         },
         getSms: (state, action) => {
             const price = initialState.sms.find(i => i.value === action.payload)
-            if (price.value === 0) {
-                state.additionalServices = true
-            } else {
-                state.additionalServices = false
-            }
+            price.value === 0 ? state.additionalServices = true : state.additionalServices = false
             state.currSms = price.price
             api.postData({sms: state.currSms})
         },

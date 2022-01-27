@@ -4,16 +4,17 @@ import Box from "@mui/material/Box";
 import {useEffect} from "react";
 import {useDispatch} from "react-redux";
 import {countTotal, getGb, getMin, getSms} from "../store/AppSlice";
-import {api} from "../api/api";
 
-
+// рэндер слайдеров Минут, СМС, Интернета
 const MySlider = ({marks, min, max, defaultValue, type}) => {
     const dispatch = useDispatch();
 
     useEffect(()=>{
+        // передача значения по умолчанию в стейт
         dispatchType(defaultValue)
     },[])
 
+    // передача текущего значения в стейт, исходя из вида слайдера
     const dispatchType =(val)=>{
         if (type === 'minutes') {
             dispatch(getMin(val))
@@ -25,6 +26,7 @@ const MySlider = ({marks, min, max, defaultValue, type}) => {
         dispatch(countTotal())
     }
 
+    // установка черного цвета слайдеру
     const theme = createTheme({
         components: {
             MuiSlider: {
