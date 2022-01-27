@@ -110,22 +110,27 @@ const appSlice = createSlice({
     name: 'app',
     initialState,
     reducers: {
+        // стоимость кол-ва выбранных минут + запрос на бэк
         getMin: (state, action) => {
             const price = initialState.minutes.find(i => i.value === action.payload)
             state.currMin = price.price
             api.postData({minutes: state.currMin})
         },
+        // стоимость кол-ва выбранных смс + запрос на бэк
+        // включение зависимости при кол-ве смс = 0
         getSms: (state, action) => {
             const price = initialState.sms.find(i => i.value === action.payload)
             price.value === 0 ? state.additionalServices = true : state.additionalServices = false
             state.currSms = price.price
             api.postData({sms: state.currSms})
         },
+        // стоимость выбранного кол-ва гб + запрос на бэк
         getGb: (state, action) => {
             const price = initialState.ethernet.find(i => i.value === action.payload)
             state.currGB = price.price
             api.postData({ethernet: state.currGB})
         },
+        // стоимость выбранных сервисов + запрос на бэк
         changeServicePrice: (state, action) => {
             const searchArr = state.messengers.concat(state.social)
             const el = searchArr.find(i => i.id === action.payload.id)
@@ -145,6 +150,7 @@ const appSlice = createSlice({
             state.servicePrice = count
             api.postData({services: state.serviceList})
         },
+        // подсчет общей суммы тарифа
         countTotal: (state,action) => {
             state.total = state.currMin + state.currSms + state.currGB + state.servicePrice
         }
