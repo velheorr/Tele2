@@ -9,20 +9,24 @@ export const renderServices = (data)=>{
 
 const Service = ({item}) => {
     const additionalServices = useSelector(state => state.app.additionalServices);
+    const dependFromSMS = useSelector(state => state.app.dependFromSMS);
     const dispatch = useDispatch()
     const {src, srcA, price, id, active} = item;
 
     // при  кол-ве смс 0 = будут активированы сервисы со след. id
-    // так же данную задачу можно реализовать если id будут в стейте или приходить из бэка
     useEffect(()=>{
-        if (additionalServices === true && (id === 13 || id === 21 || id === 22)){
+        if (additionalServices === true && dependFromSMS.includes(id)){
                 handleActive(id, true)
         }
     },[additionalServices])
 
     // ф-я чекбокса сервисов и пересчета стоимости тарифа
     const handleActive = (id, bool)=>{
-        dispatch(changeServicePrice({id, bool}))
+        if (additionalServices === true && dependFromSMS.includes(id)) {
+            dispatch(changeServicePrice({id, bool: true}))
+        } else {
+            dispatch(changeServicePrice({id, bool}))
+        }
         dispatch(countTotal())
     }
 

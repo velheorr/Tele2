@@ -96,6 +96,7 @@ const initialState = {
         }
     ],
     additionalServices: false,
+    dependFromSMS: [13,21,22],
     currMin: 0,
     currSms: 0,
     currGB: 0,
@@ -138,8 +139,7 @@ const appSlice = createSlice({
                         state.serviceList.push(i.id)
                     }
                 } else {
-                    const newArr = state.serviceList.filter(item => item !== i.id )
-                    state.serviceList = newArr
+                    state.serviceList = state.serviceList.filter(item => item !== i.id )
                 }
             })
             state.servicePrice = count
